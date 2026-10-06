@@ -16,6 +16,7 @@ import joblib
 import shap
 
 from backend.app.routers.dashboard import router as dashboard_router
+from backend.app.routers.ingestion import router as ingestion_router
 from backend.app.routers.predictions import router as predictions_router
 from backend.app.routers.recommendations import router as recommendations_router
 
@@ -129,6 +130,8 @@ async def add_process_time_header(request: Request, call_next):
 app.include_router(predictions_router, prefix="/api", tags=["ML Predictions & Simulation"])
 app.include_router(dashboard_router, prefix="/api", tags=["Dashboard & Spatial Analytics"])
 app.include_router(recommendations_router, prefix="/api", tags=["AI Recommendations & Alerts"])
+app.include_router(ingestion_router, prefix="/api", tags=["Project Ingestion"])
+
 
 
 @app.get("/", tags=["System"])
